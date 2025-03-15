@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>睡眠助手 App - 原型预览</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .prototype-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .phone-wrapper {
+            width: 375px;
+            background-color: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 12px solid #111;
+            position: relative;
+        }
+        .phone-wrapper::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 30px;
+            background-color: #111;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+        .iframe-container {
+            height: 812px;
+            width: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .screen-title {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        .return-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4F46E5;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-indigo-600 text-white py-6">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-center">睡眠助手 App - 高保真原型</h1>
+            <p class="text-center mt-2">iOS 风格界面设计 | iPhone 15 Pro 尺寸</p>
+        </div>
+    </header>
+
+    <div class="prototype-container">
+        <!-- 欢迎页 -->
+        <div>
+            <h3 class="screen-title">欢迎页</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="welcome.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主页/仪表盘 -->
+        <div>
+            <h3 class="screen-title">主页/仪表盘</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="dashboard.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 睡眠记录 -->
+        <div>
+            <h3 class="screen-title">睡眠记录</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="sleep-records.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 睡眠详情 -->
+        <div>
+            <h3 class="screen-title">睡眠详情</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="sleep-detail.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 睡眠音频 -->
+        <div>
+            <h3 class="screen-title">睡眠音频</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="audio-content.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 音频播放 -->
+        <div>
+            <h3 class="screen-title">音频播放</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="audio-player.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 智能闹钟 -->
+        <div>
+            <h3 class="screen-title">智能闹钟</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="smart-alarm.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设置闹钟 -->
+        <div>
+            <h3 class="screen-title">设置闹钟</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="set-alarm.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 睡眠习惯 -->
+        <div>
+            <h3 class="screen-title">睡眠习惯</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="sleep-habits.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 个人中心 -->
+        <div>
+            <h3 class="screen-title">个人中心</h3>
+            <div class="phone-wrapper">
+                <div class="iframe-container">
+                    <iframe src="profile.html"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="return-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer class="bg-gray-100 py-6 mt-10">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p>睡眠助手 App 原型设计 | iOS 风格界面</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>睡眠习惯 - 睡眠助手</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #333;
+            padding-bottom: 80px;
+        }
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        .app-header {
+            background-color: #f5f5f7;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .habit-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+        .tab-item.active {
+            color: #4F46E5;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background-color: #e0e7ff;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #4F46E5;
+        }
+        .achievement-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            background-color: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+        }
+        .achievement-icon {
+            font-size: 32px;
+            color: #4F46E5;
+        }
+        .tips-badge {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>10:30</div>
+        <div>
+            <span class="mr-2"><i class="fas fa-signal"></i></span>
+            <span class="mr-2"><i class="fas fa-wifi"></i></span>
+            <span><i class="fas fa-battery-full"></i></span>
+        </div>
+    </div>
+
+    <!-- 页面头部 -->
+    <div class="app-header">
+        <div class="text-2xl font-semibold">睡眠习惯</div>
+        <div class="text-sm text-gray-500 mt-1">形成健康的睡眠习惯，享受高质量的睡眠</div>
+    </div>
+
+    <!-- 睡眠习惯摘要 -->
+    <div class="p-4">
+        <div class="habit-card p-4 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-lg font-semibold">睡眠习惯评分</div>
+                <div class="bg-indigo-600 text-white rounded-full px-3 py-1 text-sm">85分</div>
+            </div>
+            <div class="text-sm text-gray-500 mb-2">您的睡眠习惯优于87%的用户</div>
+            <div class="progress-bar mb-4">
+                <div class="progress-fill" style="width: 85%;"></div>
+            </div>
+            <div class="text-sm text-gray-600">
+                继续保持良好的睡眠习惯，您将解锁更多健康成就
+            </div>
+        </div>
+
+        <!-- 睡眠习惯目标 -->
+        <div class="text-lg font-semibold mb-4">睡眠习惯目标</div>
+
+        <!-- 目标1 -->
+        <div class="habit-card mb-4">
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex justify-between items-center">
+                    <div class="font-semibold">规律作息</div>
+                    <div class="text-green-600 text-sm">已达成 <i class="fas fa-check-circle"></i></div>
+                </div>
+                <div class="text-sm text-gray-500 mt-1">每天保持固定的睡眠和起床时间</div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between mb-2">
+                    <div class="text-sm">本周达成天数</div>
+                    <div class="text-sm font-semibold">5/7天</div>
+                </div>
+                <div class="flex justify-between space-x-1 mb-2">
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">一</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">二</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">三</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">四</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">五</div>
+                    <div class="bg-gray-200 flex-1 rounded text-center text-gray-500 text-xs py-1">六</div>
+                    <div class="bg-gray-200 flex-1 rounded text-center text-gray-500 text-xs py-1">日</div>
+                </div>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-fire text-orange-500 mr-1"></i> 连续达成: 5天
+                </div>
+            </div>
+        </div>
+
+        <!-- 目标2 -->
+        <div class="habit-card mb-4">
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex justify-between items-center">
+                    <div class="font-semibold">充足睡眠</div>
+                    <div class="text-yellow-600 text-sm">进行中 <i class="fas fa-clock"></i></div>
+                </div>
+                <div class="text-sm text-gray-500 mt-1">每天保持7-8小时的高质量睡眠</div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between mb-2">
+                    <div class="text-sm">本周达成天数</div>
+                    <div class="text-sm font-semibold">4/7天</div>
+                </div>
+                <div class="flex justify-between space-x-1 mb-2">
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">一</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">二</div>
+                    <div class="bg-gray-200 flex-1 rounded text-center text-gray-500 text-xs py-1">三</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">四</div>
+                    <div class="bg-gray-200 flex-1 rounded text-center text-gray-500 text-xs py-1">五</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">六</div>
+                    <div class="bg-gray-200 flex-1 rounded text-center text-gray-500 text-xs py-1">日</div>
+                </div>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-fire text-orange-500 mr-1"></i> 连续达成: 0天
+                </div>
+            </div>
+        </div>
+
+        <!-- 目标3 -->
+        <div class="habit-card mb-4">
+            <div class="p-4 border-b border-gray-100">
+                <div class="flex justify-between items-center">
+                    <div class="font-semibold">睡前放松</div>
+                    <div class="text-green-600 text-sm">已达成 <i class="fas fa-check-circle"></i></div>
+                </div>
+                <div class="text-sm text-gray-500 mt-1">睡前30分钟放松心情，远离电子设备</div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between mb-2">
+                    <div class="text-sm">本周达成天数</div>
+                    <div class="text-sm font-semibold">6/7天</div>
+                </div>
+                <div class="flex justify-between space-x-1 mb-2">
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">一</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">二</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">三</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">四</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">五</div>
+                    <div class="bg-indigo-600 flex-1 rounded text-center text-white text-xs py-1">六</div>
+                    <div class="bg-gray-200 flex-1 rounded text-center text-gray-500 text-xs py-1">日</div>
+                </div>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-fire text-orange-500 mr-1"></i> 连续达成: 6天
+                </div>
+            </div>
+        </div>
+
+        <!-- 睡眠成就 -->
+        <div class="text-lg font-semibold mb-4">睡眠成就</div>
+        
+        <div class="habit-card p-4 mb-4">
+            <div class="grid grid-cols-3 gap-4">
+                <!-- 成就1 -->
+                <div class="text-center">
+                    <div class="achievement-badge">
+                        <i class="fas fa-moon achievement-icon"></i>
+                    </div>
+                    <div class="text-sm font-medium mt-2">一周达人</div>
+                    <div class="text-xs text-gray-500">连续7天记录睡眠</div>
+                </div>
+                
+                <!-- 成就2 -->
+                <div class="text-center">
+                    <div class="achievement-badge">
+                        <i class="fas fa-bed achievement-icon"></i>
+                    </div>
+                    <div class="text-sm font-medium mt-2">深睡高手</div>
+                    <div class="text-xs text-gray-500">深度睡眠超过2小时</div>
+                </div>
+                
+                <!-- 成就3 -->
+                <div class="text-center opacity-50">
+                    <div class="achievement-badge bg-gray-100">
+                        <i class="fas fa-star achievement-icon text-gray-400"></i>
+                    </div>
+                    <div class="text-sm font-medium mt-2">睡眠达人</div>
+                    <div class="text-xs text-gray-500">未解锁</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 睡眠小贴士 -->
+        <div class="text-lg font-semibold mb-4">睡眠小贴士</div>
+        
+        <div class="habit-card p-4">
+            <div class="tips-badge mb-3">
+                <div class="font-medium mb-1">保持规律的作息时间</div>
+                <div class="text-sm text-gray-600">即使在周末也尽量保持相同的起床和睡觉时间，有助于调节生物钟。</div>
+            </div>
+            
+            <div class="tips-badge mb-3">
+                <div class="font-medium mb-1">创造舒适的睡眠环境</div>
+                <div class="text-sm text-gray-600">保持卧室安静、黑暗和凉爽，使用舒适的床具。</div>
+            </div>
+            
+            <div class="tips-badge">
+                <div class="font-medium mb-1">睡前限制咖啡因和酒精</div>
+                <div class="text-sm text-gray-600">睡前6小时避免咖啡因，睡前限制酒精摄入，它们会干扰睡眠质量。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="tab-bar">
+        <a href="dashboard.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-home"></i></div>
+            <div>首页</div>
+        </a>
+        <a href="sleep-records.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-moon"></i></div>
+            <div>睡眠</div>
+        </a>
+        <a href="audio-content.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-headphones"></i></div>
+            <div>助眠</div>
+        </a>
+        <a href="smart-alarm.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-clock"></i></div>
+            <div>闹钟</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon"><i class="fas fa-user"></i></div>
+            <div>我的</div>
+        </a>
+    </div>
+</body>
+</html>

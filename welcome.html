@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎 - 睡眠助手</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #1a1c36;
+            color: white;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #1a1c36;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        .welcome-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1a1c36 0%, #2d3154 100%);
+            z-index: -1;
+        }
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.6;
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+        .moon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f5f3ce 0%, #b9b6a3 100%);
+            box-shadow: 0 0 30px rgba(245, 243, 206, 0.7);
+            top: 100px;
+            right: 40px;
+            z-index: -1;
+        }
+        .slide-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3);
+            margin: 0 4px;
+        }
+        .indicator.active {
+            background-color: white;
+            width: 20px;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+            padding: 14px 20px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 14px 20px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            margin-top: 16px;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex items-center">
+            <i class="fas fa-signal mr-2"></i>
+            <i class="fas fa-wifi mr-2"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 背景元素 -->
+    <div class="welcome-bg"></div>
+    <div class="stars"></div>
+    <div class="moon"></div>
+
+    <!-- 欢迎内容 -->
+    <div class="flex flex-col justify-between h-full pt-16 pb-12 px-6">
+        <div class="text-center mt-12">
+            <div class="w-24 h-24 mx-auto mb-6 bg-indigo-600 rounded-2xl flex items-center justify-center">
+                <i class="fas fa-moon text-white text-4xl"></i>
+            </div>
+            <h1 class="text-3xl font-bold mb-3">睡眠助手</h1>
+            <p class="text-gray-300 mb-6">改善睡眠质量，让生活更健康</p>
+        </div>
+
+        <div class="flex-grow flex items-center">
+            <div class="text-center w-full">
+                <h2 class="text-2xl font-semibold mb-4">追踪睡眠周期</h2>
+                <p class="text-gray-300 mb-6">了解您的睡眠模式，获得专业分析和改善建议</p>
+            </div>
+        </div>
+
+        <div>
+            <div class="slide-indicator">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+            <a href="dashboard.html" class="btn-primary block">开始使用</a>
+            <a href="#" class="btn-outline block">已有账号？登录</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>睡眠音频</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .ios-status-bar {
+            height: 44px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+        .tab-bar {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #e0e0e0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: env(safe-area-inset-bottom, 0);
+            backdrop-filter: blur(10px);
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 0;
+            color: #8e8e93;
+        }
+        .tab-item.active {
+            color: #007AFF;
+        }
+        .category-pill {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+        .audio-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .audio-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="pb-20">
+    <!-- iOS状态栏 -->
+    <div class="ios-status-bar">
+        <div class="text-sm font-medium">9:41</div>
+        <div class="flex space-x-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="px-4 py-4 flex items-center justify-between bg-white">
+        <h1 class="text-xl font-semibold">睡眠音频</h1>
+        <button class="text-blue-500">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <!-- 分类选择 -->
+    <div class="bg-white px-4 py-3 overflow-x-auto">
+        <div class="flex space-x-2 pb-1">
+            <div class="category-pill bg-blue-500 text-white">全部</div>
+            <div class="category-pill bg-gray-100">助眠音乐</div>
+            <div class="category-pill bg-gray-100">自然声音</div>
+            <div class="category-pill bg-gray-100">冥想引导</div>
+            <div class="category-pill bg-gray-100">睡前故事</div>
+            <div class="category-pill bg-gray-100">白噪音</div>
+        </div>
+    </div>
+
+    <!-- 推荐内容 -->
+    <div class="mt-3 px-4 py-5 bg-white">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">今日推荐</h2>
+            <a href="#" class="text-blue-500 text-sm">查看全部</a>
+        </div>
+        
+        <div class="audio-card mb-4">
+            <div class="relative">
+                <img src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg" alt="夜间雨声" class="rounded-t-lg">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-2 px-3">
+                    <span class="text-white font-medium">夜间雨声</span>
+                </div>
+            </div>
+            <div class="bg-white p-3">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-600 text-sm">自然声音 · 30分钟</p>
+                        <div class="flex items-center mt-1">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.8</span>
+                        </div>
+                    </div>
+                    <a href="audio-player.html" class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="audio-card">
+            <div class="relative">
+                <img src="https://images.pexels.com/photos/4061662/pexels-photo-4061662.jpeg" alt="深度放松冥想" class="rounded-t-lg">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-2 px-3">
+                    <span class="text-white font-medium">深度放松冥想</span>
+                </div>
+            </div>
+            <div class="bg-white p-3">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-600 text-sm">冥想引导 · 20分钟</p>
+                        <div class="flex items-center mt-1">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.9</span>
+                        </div>
+                    </div>
+                    <a href="audio-player.html" class="bg-blue-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 热门内容 -->
+    <div class="mt-3 px-4 py-5 bg-white">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">热门助眠</h2>
+            <a href="#" class="text-blue-500 text-sm">查看全部</a>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg" alt="海浪声" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">海浪声</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">自然声音 · 45分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.7</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg" alt="森林鸟鸣" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">森林鸟鸣</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">自然声音 · 60分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.6</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/33684/astronaut-spacewalk-iss-tools.jpg" alt="宇宙摇篮曲" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">宇宙摇篮曲</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">助眠音乐 · 30分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.8</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/33684/astronaut-spacewalk-iss-tools.jpg" alt="宇宙摇篮曲" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">宇宙摇篮曲</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">助眠音乐 · 30分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.8</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/531321/pexels-photo-531321.jpeg" alt="轻柔钢琴曲" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">轻柔钢琴曲</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">助眠音乐 · 40分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.5</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 为您推荐 -->
+    <div class="mt-3 px-4 py-5 bg-white mb-4">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">为您推荐</h2>
+            <a href="#" class="text-blue-500 text-sm">换一批</a>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/1420440/pexels-photo-1420440.jpeg" alt="轻松入眠引导" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">轻松入眠引导</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">冥想引导 · 15分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.9</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/3560044/pexels-photo-3560044.jpeg" alt="白噪音混合" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">白噪音混合</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">白噪音 · 120分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.7</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/262367/pexels-photo-262367.jpeg" alt="睡前放松故事" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">睡前放松故事</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">睡前故事 · 25分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.6</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-card">
+                <div class="relative">
+                    <img src="https://images.pexels.com/photos/4652740/pexels-photo-4652740.jpeg" alt="午后小憩冥想" class="rounded-t-lg h-24 object-cover w-full">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent py-1 px-2">
+                        <span class="text-white text-sm">午后小憩冥想</span>
+                    </div>
+                </div>
+                <div class="bg-white p-2">
+                    <p class="text-gray-600 text-xs">冥想引导 · 10分钟</p>
+                    <div class="flex justify-between items-center mt-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-xs text-gray-500 ml-1">4.8</span>
+                        </div>
+                        <a href="audio-player.html" class="text-blue-500">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部标签栏 -->
+    <div class="tab-bar">
+        <a href="dashboard.html" class="tab-item">
+            <i class="fas fa-home"></i>
+            <span class="text-xs mt-1">首页</span>
+        </a>
+        <a href="sleep-records.html" class="tab-item">
+            <i class="fas fa-moon"></i>
+            <span class="text-xs mt-1">睡眠</span>
+        </a>
+        <a href="audio-content.html" class="tab-item active">
+            <i class="fas fa-headphones"></i>
+            <span class="text-xs mt-1">音频</span>
+        </a>
+        <a href="smart-alarm.html" class="tab-item">
+            <i class="fas fa-bell"></i>
+            <span class="text-xs mt-1">闹钟</span>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <i class="fas fa-user"></i>
+            <span class="text-xs mt-1">我的</span>
+        </a>
+    </div>
+</body>
+</html>

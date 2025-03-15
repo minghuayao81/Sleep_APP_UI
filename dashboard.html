@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - 睡眠助手</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f9fafb;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #1f2937;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #f9fafb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        .tab-bar {
+            height: 83px;
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding-bottom: 20px;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            color: #6b7280;
+        }
+        .tab-item.active {
+            color: #4F46E5;
+        }
+        .tab-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .sleep-score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#4F46E5 0% 85%, #e5e7eb 85% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .sleep-score-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .chart-container {
+            height: 120px;
+        }
+        .day-bar {
+            width: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            position: relative;
+            margin: 0 6px;
+        }
+        .day-bar-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #4F46E5;
+            border-radius: 4px;
+        }
+        .quick-action {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div>9:41</div>
+        <div class="flex items-center">
+            <i class="fas fa-signal mr-2"></i>
+            <i class="fas fa-wifi mr-2"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="pt-14 pb-24 px-5">
+        <!-- 顶部问候 -->
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-2xl font-bold">早上好，小明</h1>
+                <p class="text-gray-500">今天是 3月15日 星期六</p>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden">
+                <img src="https://images.pexels.com/photos/2078467/pexels-photo-2078467.jpeg" alt="用户头像">
+            </div>
+        </div>
+
+        <!-- 睡眠评分卡片 -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">昨晚睡眠</h2>
+                <a href="sleep-detail.html" class="text-indigo-600 text-sm">详情</a>
+            </div>
+            <div class="flex">
+                <div class="flex-1 flex justify-center">
+                    <div class="sleep-score-circle">
+                        <div class="sleep-score-inner">
+                            <div class="text-3xl font-bold">85</div>
+                            <div class="text-xs text-gray-500">良好</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="mb-3">
+                        <div class="text-sm text-gray-500 mb-1">睡眠时长</div>
+                        <div class="font-semibold">7小时30分钟</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="text-sm text-gray-500 mb-1">入睡时间</div>
+                        <div class="font-semibold">23:15</div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">深度睡眠</div>
+                        <div class="font-semibold">2小时12分钟</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 一周睡眠趋势 -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">一周睡眠趋势</h2>
+                <a href="sleep-records.html" class="text-indigo-600 text-sm">查看全部</a>
+            </div>
+            <div class="chart-container flex items-end justify-between">
+                <div class="flex flex-col items-center">
+                    <div class="day-bar h-full">
+                        <div class="day-bar-fill h-3/4"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-2">日</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="day-bar h-full">
+                        <div class="day-bar-fill h-4/5"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-2">一</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="day-bar h-full">
+                        <div class="day-bar-fill h-1/2"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-2">二</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="day-bar h-full">
+                        <div class="day-bar-fill h-4/6"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-2">三</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class
